@@ -4,6 +4,7 @@ import org.junit.Assert;
 import org.junit.Test;
 import rocks.zipcodewilmington.animals.Cat;
 
+import java.rmi.server.ExportException;
 import java.util.Date;
 
 /**
@@ -39,5 +40,46 @@ public class CatTest {
         Assert.assertEquals(givenBirthDate, retrievedBirthDate);
         Assert.assertEquals(givenId, retrievedId);
     }
+    @Test
+    public void setNameTest(){
+        //Initialize a new Cat
+        Cat cat = new Cat("Dre",null, null);
+        //This what i expect to get back(sometimes can be any data type)
+        String Expected = "Davis";
+        //Setting cat name to davis
+        cat.setName("Davis");
+        //Checking getName Method to see what tit actually returns
+        String Actual = cat.getName();
+        //Checking that what i expect to get back and what i actually get back is the samething.
+        Assert.assertEquals(Expected, Actual);
+
+    }
+    @Test
+    public void SpeakTest(){
+        Cat cat = new Cat(null,null, null);
+        String Expected = "meow!";
+        String Actual = cat.speak();
+        Assert.assertEquals(Expected, Actual);
+    }
+    @Test
+    public void setBirthDateTest(){
+        Cat cat = new Cat(null,null, null);
+        Date Expected = new Date (11-19-1992);
+        cat.setBirthDate(Expected);
+        Date Actual = cat.getBirthDate();
+        Assert.assertEquals(Actual, Expected);
+    }
+    @Test
+    public void eatTest(){
+        Cat cat = new Cat(null,null, null);
+        Integer Expected = 1;
+        cat.eat(new Food());
+        cat.getNumberOfMealsEaten();
+        Integer food = 1;
+        Integer Actual = cat.getNumberOfMealsEaten();
+        Assert.assertEquals(Expected,Actual);
+    }
+
+
 
 }
